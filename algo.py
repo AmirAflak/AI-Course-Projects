@@ -83,7 +83,6 @@ def heuristic(location):
                 k1 = (location[i][j][k] - 1) % 2
                 j1 = int(((location[i][j][k] - 1)/2)) % 2
                 i1 = int(((location[i][j][k] - 1)/4)) % 2
-                #print(location[i][j][k], i,j,k, "    ", i1,j1,k1)
                 sum += abs(i - i1) + abs(j - j1) + abs(k - k1)
     return sum/4.0
 
@@ -126,8 +125,8 @@ def biBFS(start):
     backwardAllRoute[repr(goal.tolist())] = []
     forward1 = util.Queue()
     backward1 = util.Queue()
-    forward1.push((start, [], 0))  # Added depth parameter to keep track of depth
-    backward1.push((goal, [], 0))  # Added depth parameter to keep track of depth
+    forward1.push((start, [], 0))  
+    backward1.push((goal, [], 0))  
     forward2 = util.Queue()
     backward2 = util.Queue()
     expand = 0
@@ -135,7 +134,7 @@ def biBFS(start):
     while True:
         while not forward1.isEmpty():
             explore += 1
-            temp, path, depth = forward1.pop()  # Extracting depth from the popped element
+            temp, path, depth = forward1.pop()  
             if not repr(temp.tolist()) in forwardVisited:
                 forwardVisited.add(repr(temp.tolist()))
                 for i in range(1,13):
@@ -148,13 +147,13 @@ def biBFS(start):
                                 z.append(12)
                             else:
                                 z.append((k + 6 ) % 12)
-                        return path + [i] + z, explore, expand, depth + 1  # Returning depth + 1
-                    forward2.push((next, path + [i], depth + 1)) # Incrementing depth by 1
+                        return path + [i] + z, explore, expand, depth + 1 
+                    forward2.push((next, path + [i], depth + 1)) 
                     forwardAll.add(repr(next.tolist()))
                     forwardAllRoute[repr(next.tolist())] = path + [i]
         while not backward1.isEmpty():
             explore += 1
-            temp, path, depth = backward1.pop()  # Extracting depth from the popped element
+            temp, path, depth = backward1.pop()  
             if not repr(temp.tolist()) in backwardVisited:
                 backwardVisited.add(repr(temp.tolist()))
                 for i in range(1,13):
@@ -171,8 +170,8 @@ def biBFS(start):
                             i=12
                         else:
                             i = (i + 6 ) % 12 
-                        return forwardAllRoute[repr(next.tolist())] + [i] + z, explore, expand, depth + 1  # Returning depth + 1
-                    backward2.push((next, [i] + path, depth + 1))  # Incrementing depth by 1
+                        return forwardAllRoute[repr(next.tolist())] + [i] + z, explore, expand, depth + 1  
+                    backward2.push((next, [i] + path, depth + 1))  
                     backwardAll.add(repr(next.tolist()))
                     backwardAllRoute[repr(next.tolist())] = [i] + path
         while not forward2.isEmpty():
