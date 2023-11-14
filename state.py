@@ -1,17 +1,5 @@
 import numpy as np
 
-def is_goal_state(state):
-  """Checks if the state is the goal state of the Rubik's cube problem.
-
-  Args:
-    state: The state of the Rubik's cube.
-
-  Returns:
-    True if the state is the goal state, False otherwise.
-  """
-
-  # Check if the state is equal to the solved state.
-  return np.array_equal(state, solved_state())
 
 
 def solved_state():
