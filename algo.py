@@ -1,8 +1,6 @@
 import numpy as np
-from state import next_state, solved_state, is_goal_state
+from state import next_state, solved_state
 from location import next_location
-from queue import PriorityQueue
-from collections import deque
 import util
 
 
