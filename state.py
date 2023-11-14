@@ -3,12 +3,6 @@ import numpy as np
 
 
 def solved_state():
-    # consider [1, 1], [1, 1] as Up of the cube with blue color.
-    # consider [2, 2], [2, 2] as Left of the cube with white color.
-    # consider [3, 3], [3, 3] as Front of the cube with red color.
-    # consider [4, 4], [4, 4] as Right of the cube with yellow color.
-    # consider [5, 5], [5, 5] as Back of the cube with orange color.
-    # consider [6, 6], [6, 6] as Down of the cube with green color.
     return np.array([
         [1, 1], 
         [1, 1],
